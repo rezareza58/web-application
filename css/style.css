@@ -1,0 +1,40 @@
+body{
+  margin: 0;
+  padding: 0;
+  transition: 1s;
+}
+#first{
+  background-color: #ecf2f9;
+  box-shadow: 10px 10px 6px rgba(0,0,0,0.6);
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+}
+form{
+  margin: 10px;
+  text-align: center;
+
+}
+input{
+  margin: 10px;
+  text-align: center;
+}
+button{
+  margin: 10px;
+  text-align: center;
+}
+#reg{
+  background-color: #79a6d2;
+  box-shadow: 10px 10px 6px rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 7px;
+}
+#login{
+  background-color: #79a6d2;
+  box-shadow: 10px 10px 6px rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 7px;
+}
+p{
+	color:red;
+}

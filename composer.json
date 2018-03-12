@@ -1,0 +1,13 @@
+{
+    "name": "etudiant/web_application",
+    "description": "first web app",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rezareza58",
+            "email": "r.r.moghadam@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,0 +1,11 @@
+<?php 
+return[
+    'db'=>[
+        'driver'=>'mysql',
+        'host'=>'localhost',
+        'bdname'=>'web_app',
+        'dbuser'=>'root',
+        'dbpass'=>null
+    ]
+];
+?>
