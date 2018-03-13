@@ -17,7 +17,7 @@ class DBConnector
             self::$config['host'],
             self::$config['dbname']
             );
-        self::$connection =new\PDO(
+        self::$connection = new\PDO(
             $dsn,
             self::$config['dbuser'],
             self::$config['dbpass']

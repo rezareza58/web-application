@@ -1,8 +1,13 @@
+<?php 
+require_once __DIR__.'/../../vendor/autoload.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>My title here</title>
+        <link rel="stylesheet" href="/../../css/style.css">
     </head>
     <body>
     <?php 
@@ -22,7 +27,7 @@
             $sql = 'SELECT* FROM user WHERE email = :email';
             $statment = $connection->prepare($sql);
             $statment->bindparam('email', $displayAccountEmail, PDO::PAPAM_STR);
-            $statment-execute();
+            $statment->execute();
             
             
             $allResults = $statment->fetchAll();
@@ -38,11 +43,26 @@
                 	<p>id : <?php echo $aLine['iduser']; ?></p>
                 	<p>firstname : <?php echo $aLine['firstname']; ?></p>
                 	<p>lastname : <?php echo $aLine['lastname']; ?></p>
-                	<p>emaile : <?php echo $aLine['emaile']; ?></p>
+                	<p>emaile : <?php echo $aLine['email']; ?></p>
                 </div>
                 <?php 
             }  
         }
       ?>
+    <form id="login" class="" action="/src/Controller/account.php" method="GET">
+      <h3>Login</h3>
+      <input type="email" name="$email" value="" placeholder="Your Email" required><br>
+      <input type="text" name="$pass_1" value="" placeholder="Your password" ><br>
+      <button type="submit" name="button">Login</button>
+    </form>
+
+    <form id="logout" class="" action="index.html" method="post">
+      <h3>Logout</h3>
+      <button type="submit" name="button">Logout</button>
+    </form>
+  
     </body>
 </html>
+
+
+

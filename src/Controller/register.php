@@ -1,4 +1,9 @@
 <?php 
+require_once __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../config/config.php';
+require __DIR__.'/../Service/DBConnector.php';
+
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     $firstname = $_POST['firstname'] ?? NULL;
     $lastname = $_POST['lastname'] ?? NULL;
@@ -16,11 +21,11 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
             $connection = Service\DBConnector::getConnection();
         } catch (PDOException $e) {
             http_response_code(500);
-            echo 'A problem occured';
+            echo 'A problem occured to connecting to server';
             exit(1);
         }
         $sql = "INSERT INTO user(firstname, lastname, email, pass) VALUES (\"$firstname\", \"$lastname\", \"$email\", \"$pass_1\")";
-        $working = $connection->exec($sql);
+        $working = $connection->execute($sql);
         
         if (!$working){
             echo implode(',', $connection->errorInfo());
@@ -56,7 +61,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         <?php }?>
         <label for="firstname">Your firstname :</label>
         <br>
-        <input type="text" name="firstname" value="" placeholder="atleast 4 char." required>
+        <input type="text" name="firstname" value="<?php echo htmlentities($firstname ?? '')?>" placeholder="atleast 4 char." required>
         <br>
         
         
@@ -67,7 +72,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         <?php }?>
         <label for="lastname">Your Lastname :</label>
         <br>
-        <input type="text" name="lastname" value="" placeholder="atleast 4 char." required>
+        <input type="text" name="lastname" value="<?php echo htmlentities($lastname ?? '')?>" placeholder="atleast 4 char." required>
         <br>
         
         
@@ -78,7 +83,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         <?php }?>
         <label for="email">Your Email :</label>
         <br>
-        <input type="email" name="email" value="" placeholder="Your Email" required>
+        <input type="email" name="email" value="<?php echo htmlentities($email ?? '')?>" placeholder="Your Email" required>
         <br>
         
         
@@ -102,13 +107,6 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         <button type="submit">Register</button>
     </form>
 
-
-    <form id="login" class="" action="index.html" method="post">
-      <h3>Login</h3>
-      <input type="text" name="" value="Your Email"><br>
-      <input type="text" name="" value="Your Password"><br>
-      <button type="submit" name="button">Login</button>
-    </form>
 
     <form id="logout" class="" action="index.html" method="post">
       <h3>Logout</h3>
